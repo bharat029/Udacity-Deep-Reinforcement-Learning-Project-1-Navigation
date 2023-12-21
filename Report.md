@@ -15,7 +15,7 @@ In order to solve this challenge, I have implemented the Double Deep Q-Network (
 
 The algorithm is implemented in the `Navigation.ipynb` notebook. The implementation is based on the [Deep Q-Network (DQN) exercise]. 
 
-I tried multiple model architectures and hyperparameters. The final model architecture is a simple 3-layer fully connected network with 64 and 16 hidden units in each layer as follows: 
+I tried multiple model architectures and hyperparameters. The final model architecture is a simple 3-layer fully connected network with 64 hidden units in each layer as follows: 
 
 ```
 QNetwork(
@@ -24,7 +24,7 @@ QNetwork(
     (relu0): ReLU()
     (fc1): Linear(in_features=64, out_features=16, bias=True)
     (relu1): ReLU()
-    (fc2): Linear(in_features=16, out_features=4, bias=True)
+    (fc2): Linear(in_features=64, out_features=4, bias=True)
   )
 )
 ```
@@ -36,10 +36,10 @@ The final hyperparameters are:
     batch_size=128
     gamma=0.99
     tau=1e-3
-    lr=8e-4
+    lr=1e-3
     lr_decay=0.995
     update_every=4
-    n_episodes=700
+    n_episodes=800
     eps_start=1.0
     eps_end=0.01
     eps_decay=0.995
