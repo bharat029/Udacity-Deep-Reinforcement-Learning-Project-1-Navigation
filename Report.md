@@ -17,35 +17,36 @@ In order to solve this challenge, I have implemented both the Double Deep Q-Netw
 
 The algorithm is implemented in the `Navigation.ipynb` notebook. The implementation is based on the [Deep Q-Network (DQN) exercise]. 
 
-I tried multiple model architectures and hyperparameters. The final model architecture is a simple 3-layer fully connected network with 64 hidden units in each layer for both the value and advantage streams, with the first 2 layers shared between them. The final model architecture is shown below:
+I tried multiple model architectures and hyperparameters. The final model architecture is a simple 3-layer fully connected network with 128 hidden units in each layer for both the value and advantage streams, with the first 2 layers shared between them. The final model architecture is shown below:
 
 ```
 DuelingQNetwork(
   (common_network): Sequential(
-    (fc0): Linear(in_features=37, out_features=64, bias=True)
+    (fc0): Linear(in_features=37, out_features=128, bias=True)
     (relu0): ReLU()
-    (fc1): Linear(in_features=64, out_features=64, bias=True)
+    (fc1): Linear(in_features=128, out_features=128, bias=True)
     (relu1): ReLU()
   )
-  (value_out): Linear(in_features=64, out_features=1, bias=True)
-  (advantage_out): Linear(in_features=64, out_features=4, bias=True)
+  (value_out): Linear(in_features=128, out_features=1, bias=True)
+  (advantage_out): Linear(in_features=128, out_features=4, bias=True)
 )
+
 ```
 
 The final hyperparameters are:
 
 ```
-    buffer_size=int(1e5)
-    batch_size=256
-    gamma=0.99
-    tau=1e-3
-    lr=1e-3
-    lr_decay=0.999
-    update_every=4
-    n_episodes=500
-    eps_start=0.10
-    eps_end=0.01
-    eps_decay=0.99
+  buffer_size=int(1e5)
+  batch_size=64
+  gamma=0.99
+  tau=1e-2
+  lr=1e-3
+  lr_decay=0.995
+  update_every=4
+  n_episodes=500
+  eps_start=0.10
+  eps_end=0.01
+  eps_decay=0.99
 ```
 
 This model was able to solve the environment in 196 episodes, as you can see in the training progress chart below:
